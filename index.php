@@ -27,7 +27,7 @@ $koneksi = new mysqli("localhost","root","","prakp");
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 	    	<li><a href="keranjang.php"><span class="glyphicon glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-	    	<!-- <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+	    	<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> 
 	    </ul>
 	</div>
 </nav>
