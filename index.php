@@ -26,8 +26,17 @@ $koneksi = new mysqli("localhost","root","","prakp");
 			<li><a href="checkout.php">Checkout</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-	    	<li><a href="keranjang.php"><span class="glyphicon glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-	    	<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> 
+			<?php if (isset($_SESSION["keranjang"])): ?>
+	    		<li><a href="keranjang.php"><span class="glyphicon glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+	    	<?php else: ?>
+	    		<li><a href="belumadabarang.php"><span class="glyphicon glyphicon glyphicon-shopping-cart"></span> Cart</a></li> 
+	    	<?php endif ?>
+	    	<!-- <li><a href="keranjang.php"><span class="glyphicon glyphicon glyphicon-shopping-cart"></span> Cart</a></li> -->
+	    	<?php if (isset($_SESSION["pelanggan"])): ?>
+	    		<li><a href="Logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li> 
+	    	<?php else: ?>
+	    		<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> 
+	    	<?php endif ?>	    	
 	    </ul>
 	</div>
 </nav>

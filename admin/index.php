@@ -133,6 +133,10 @@ font-size: 16px;">  <a href="index.php?halaman=tambahadmin" class="btn btn-prima
                 {
                     include 'halaman/suratjalan.php';
                 }
+                else if($_GET['halaman']=="inputsuratjalan")
+                {
+                    include '../surat_jalan/surat_jalan.php';
+                }
                 else if($_GET['halaman']=="logout")
                 {
                     include 'halaman/logout.php';

@@ -9,6 +9,23 @@ $koneksi = new mysqli("localhost","root","","prakp");
 <head>
 	<title>UD. RIZAL JAYA</title>
 	<link rel="stylesheet" type="text/css" href="admin/assets/css/bootstrap.css">
+	<style>  
+            #leftbox { 
+                float:left;  
+                margin-right: 20%;
+                width: 20%:;
+            } 
+            #middlebox{ 
+                float:left; 
+                width: 30%;
+                margin : auto;
+            } 
+            #rightbox{ 
+                float:right;
+                width: 5%; 
+                margin-right: 0%;
+            } 
+        </style>  
 </head>
 <body>
 
@@ -23,8 +40,12 @@ $koneksi = new mysqli("localhost","root","","prakp");
 			<li><a href="checkout.php">Checkout</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-	    	<li class="active"><a href="keranjang.php"><span class="glyphicon glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-	    	<!-- <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+	    	<li><a href="keranjang.php"><span class="glyphicon glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+	    	<?php if (isset($_SESSION["pelanggan"])): ?>
+	    		<li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li> 
+	    	<?php else: ?>
+	    		<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> 
+	    	<?php endif ?>	    	
 	    </ul>
 	</div>
 </nav>
@@ -39,8 +60,9 @@ $koneksi = new mysqli("localhost","root","","prakp");
 					<th>NO</th>
 					<th>Produk</th>
 					<th>Harga</th>
-					<th>Jumlah</th>
+					<!-- <th>Jumlah</th> -->
 					<th>Sub Harga</th>
+					<th colspan="3">Aksi</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -52,18 +74,31 @@ $koneksi = new mysqli("localhost","root","","prakp");
 				$subharga = $pecah["harga_produk"] * $jumlah;
 				?>
 				<tr>
-					<th><?php echo $nomor; ?></th>
-					<th><?php echo $pecah["nama_produk"]; ?></th>
-					<th>Rp. <?php echo number_format($pecah["harga_produk"]); ?></th>
-					<th><?php echo $jumlah; ?></th>
-					<th>Rp. <?php echo number_format($subharga); ?></th>
+					<td><?php echo $nomor; ?></td>
+					<td><?php echo $pecah["nama_produk"]; ?></td>
+					<td>Rp. <?php echo number_format($pecah["harga_produk"]); ?></td>
+					<!-- <th><?php echo $jumlah; ?></th> -->
+					<td>Rp. <?php echo number_format($subharga); ?></td>
+					<td>
+						<div id="leftbox"><a href="kurangibarangkeranjang.php?id=<?php echo $id_produk ?>" class="btn btn-danger btn-xs">-</a></div>
+						<div id="middlebox"><?php echo $jumlah; ?></div>
+						<div id="leftbox"><a href="tambahbarangkeranjang.php?id=<?php echo $id_produk ?>" class="btn btn-primary btn-xs">+</a></div>
+					</td>
+							
+						
+											
 				</tr>
 				<?php $nomor++; ?>
 				<?php endforeach?>
 			</tbody>
 		</table>
 		<a href="index.php" class="btn btn-default">Lanjut Belanja</a>
-		<a href="checkout.php" class="btn btn-primary">Checkout</a>
+		<!-- <a href="login.php" class="btn btn-primary">Checkout</a> -->
+		<?php if (isset($_SESSION["pelanggan"])): ?>
+	    	<a href="checkout.php" class="btn btn-primary">Checkout</a>
+	 	<?php else: ?>
+	    	<a href="login.php" class="btn btn-primary">Checkout</a> 
+	    <?php endif ?>
 	</div>
 </section>
 

@@ -22,43 +22,60 @@ $koneksi = new mysqli("localhost","root","","prakp");
         <a class="navbar-brand" href="#">UD. RIZAL JAYA</a>
       </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="index.php">Home</a></li>
+      <li class=""><a href="index.php">Home</a></li>
       <li><a href="checkout.php">Checkout</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right"> 
         <li><a href="keranjang.php"><span class="glyphicon glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-        <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> 
+        <li class="active"><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> 
       </ul>
   </div>
 </nav>
 
   <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Login Pelanggan</h3>
-          </div>
-          <div class="panel-body">
-            <form method="post">
-              <div class="form-group">
-                <label>Email</label>
-                <input type="email" class="form-control" name="email">
-              </div>
-              <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control" name="password">
-              </div>
-              <button class="btn btn-primary" name="simpan">Simpan</button>
-            </form>
-          </div>
+        <div class="row text-center ">
+            <div class="col-md-12">
+                <br /><br />
+                <h2> Rizal Jaya : Login Pelanggan</h2>
+                <br>
+            </div>
         </div>
-      </div>
+         <div class="row ">
+               
+                  <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                        <center><strong>Masukkan Email Dan Passsword</strong></center>  
+                            </div>
+                            <div class="panel-body">
+                                <form role="form" method="post">
+                                       <br />
+                                     <div class="form-group input-group">
+                                            <span class="input-group-addon"></i></span>
+                                            <input type="text" class="form-control" name="email" placeholder="Masukkan Username Anda"/>
+                                        </div>
+                                     <div class="form-group input-group">
+                                            <span class="input-group-addon"></i></span>
+                                            <input type="password" class="form-control"  name="password" placeholder="Masukkan Password Anda"/>
+                                        </div>
+                                    <div class="form-group">
+                                            
+                                        </div>
+                                     
+                                    <hr/>
+                                    <center><button class="btn btn-primary" name="login">Login</button></center>
+                                    </form>
+                            </div>
+                           
+                        </div>
+                    </div>
+                
+                
+        </div>
     </div>
-  </div>
 
   <?php
-  if (isset($_POST["simpan"])) 
+  if (isset($_POST["login"])) 
   {
     $email = $_POST["email"];
     $password = $_POST["password"];

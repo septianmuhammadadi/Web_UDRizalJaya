@@ -49,7 +49,7 @@ if (isset($_POST['ubah']))
 	{
 		$koneksi->query("UPDATE banner SET banner_title='$_POST[nama]',banner_deskripsi='$_POST[deskripsi]',banner_link='$_POST[banner_link]' WHERE banner_id='$_GET[id]'");
 	}
-	echo "<script>alert('Data Produk Telah Diubah')</script>";
+	echo "<script>alert('Data Banner Telah Diubah')</script>";
 	echo "<meta http-equiv='refresh' content='1;url=index.php?halaman=banner'>";
 }
 ?>
